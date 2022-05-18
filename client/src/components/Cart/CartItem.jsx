@@ -1,5 +1,6 @@
 import { Card, Box, makeStyles, Typography, Button } from "@material-ui/core";
 import React from "react";
+import { Link } from "react-router-dom";
 
 
 
@@ -48,20 +49,23 @@ const CartItem = ({ item, removeItemFromCart }) => {
         />
        
       </Box>
-      <Box className={classes.rightContainer}>
+    
+     <Box className={classes.rightContainer}>
+     <Link  to={`/product/${item._id}`}>
         <Typography>{item.title.longTitle}</Typography>
-     
+      </Link> 
         <Typography>
           <span className={classes.price}>₹{item.price.cost}</span>
      
         </Typography>
-        <Button
+      { removeItemFromCart &&  <Button
           className={classes.removeBt}
           onClick={() => removeItemFromCart(item._id)}
         >
           Remove
-        </Button>
+        </Button>}
       </Box>
+    
     </Card>
   );
 };

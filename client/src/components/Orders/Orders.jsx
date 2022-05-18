@@ -33,20 +33,13 @@ const Orders = () => {
           <Grid lg={9} md={9} sm={12} xs={12} item>
             <Box>
               <Typography style={{ fontWeeight: 600, fontSize: 18 }}>
-                My Cart ({cartItems.length})
+                My Orders ({cartItems.length})
               </Typography>
             </Box>
             {cartItems.map((item) => (
-              <CartItem item={item} removeItemFromCart={removeItemFromCart} />
+              <CartItem item={item} />
             ))}
-            <Box>
-              <Button onClick={() => goToCheckout()} variant="contained">
-                Place Order
-              </Button>
-              <Button style={{margin:"10px"}} variant="contained" onClick={() => addItem()}>
-                Shop More
-              </Button>
-            </Box>
+         
           </Grid>
           <Grid item lg={3} md={3} sm={12} xs={12}>
             <TotalView cartItems={cartItems} />
