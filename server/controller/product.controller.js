@@ -1,6 +1,7 @@
 import Products from "../models/product.model.js";
-import  mongoose from "mongoose";
-let ObjectId = mongoose.Types.ObjectId()
+import Orders from "../models/order.model.js";
+import mongoose from "mongoose";
+let ObjectId = mongoose.Types.ObjectId();
 
 export const getProducts = async (req, res, next) => {
   try {
@@ -15,7 +16,6 @@ export const getProducts = async (req, res, next) => {
 };
 export const getProductById = async (req, res, next) => {
   try {
-    console.log("ID >>>",req.params.id)
     const productDetail = await Products.findOne({
       _id: mongoose.Types.ObjectId(req.params.id),
     });
@@ -25,5 +25,21 @@ export const getProductById = async (req, res, next) => {
     return res.status(200).json(productDetail);
   } catch (error) {
     console.log("Error", error.message);
+  }
+};
+
+export const placeOrder = async (req, res) => {
+  try {
+    const order = Orders({
+      firstname: req.body.userData.firstname,
+      lastname: req.body.userData.lastname,
+      email: req.body.userData.email,
+      phone: req.body.userData.phone,
+      cartItem: req.body.cartItem,
+    });
+    const orderData = await order.save();
+    return res.status(200).json(orderData);
+  } catch (error) {
+    console.log(error);
   }
 };

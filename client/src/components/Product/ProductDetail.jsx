@@ -51,12 +51,7 @@ const ProductDetail = () => {
 							
 								Add to Cart
 							</Button>
-							<Button
-								variant='contained'
-								onClick={() => buyNow()}>
-								
-								Buy now
-							</Button>
+							
 						</Box>
 					</Grid>
 					<Grid item lg={8} md={8} sm={8} xs={12}>

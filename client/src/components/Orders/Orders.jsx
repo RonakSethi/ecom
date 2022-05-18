@@ -4,11 +4,11 @@ import { Box, Typography, Button, Grid } from "@material-ui/core";
 import { removeFromCart } from "../../redux/actions/cartActions";
 import { useNavigate } from "react-router-dom";
 //components
-import CartItem from "./CartItem";
-import EmptyCart from "./EmptyCart";
-import TotalView from "./TotalView";
+import CartItem from "../Cart/CartItem";
+import EmptyCart from "../Cart/EmptyCart";
+import TotalView from "../Cart/TotalView";
 
-const Cart = () => {
+const Orders = () => {
   const { cartItems } = useSelector((state) => state.addtocart);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -61,4 +61,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default Orders;
